@@ -77,7 +77,9 @@ Logger.prototype = {
         }
         
         if (action.indexOf('module') >= 0) {
-            logParams.push('%c' + this.module);
+            action.indexOf('time') >= 0
+                ? logParams.push(`%c${this.module} `)
+                : logParams.push(`%c ${this.module} `);
             styleParams.push(Logger.getStyle.module());
         }
 

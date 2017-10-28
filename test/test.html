@@ -10,18 +10,21 @@
     <script type="module">
         import Logger from '../dist/Logger.js';
         
-        var logg = new Logger('module');
+        var logger = new Logger('module');        
+        
+        // Logger.setConfig('switch', false);
+        //不显示时间
+        Logger.setConfig('action', [
+            'level', 'module'
+        ]);
+        Logger.setConfig('level', 2); //只打印2级别以上的日志
+        logger.info('info');
+        logger.log('log');
+        logger.warn('warn');
+        logger.error('error');
 
-        // logg.info('info');
-        // logg.log('log');
-        // logg.warn('warn');
-        // logg.error('error');
-        logg.warn('is danger');
-        logg.info({
-            name: 'shenfq'
-        });
-
-        logg.log('log1', 'log2');
+        logger.warn( Logger.getConfig('version') );//获取版本号
+        logger.error( Logger.getConfig() ); //全部配置项
     </script>
 </body>
 </html>

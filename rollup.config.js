@@ -2,8 +2,8 @@ import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import babelrc from 'babelrc-rollup';
 import uglify from 'rollup-plugin-uglify';
+import { minify } from 'uglify-es';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -11,8 +11,7 @@ export default {
     input: 'src/index.js',
     output: {
         file: 'dist/Logger.js', // 输出文件
-        format: 'umd',
-        moduleName: 'Logger'
+        format: 'es'
     },
     plugins: [
         json(),
@@ -22,7 +21,17 @@ export default {
             }
         }),
         commonjs(),
-        babel(babelrc()),
-        production && uglify()
+        babel({
+            babelrc: false,
+            presets: [
+                [
+                    "env",
+                    {
+                        modules: false
+                    }
+                ]
+            ]
+        }),
+        production && uglify({}, minify)
     ]
 };
