@@ -1,0 +1,17 @@
+{
+    "presets": [
+      ["env", {
+          "modules": false,
+          "targets": {
+              "browsers": ["Chrome >= 35", "ie >= 9", "last 5 Safari versions", "ff >= 40"]
+          }
+      }]
+    ],
+    "plugins": [
+        "external-helpers",
+        "transform-runtime"
+    ],
+    "externalHelpers": true,
+    "runtimeHelpers" : true,
+    "exclude": "node_modules/**"
+}

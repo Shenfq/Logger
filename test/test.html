@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import Logger from '../dist/Logger.js';
+        
+        var logg = new Logger('module');
+
+        // logg.info('info');
+        // logg.log('log');
+        // logg.warn('warn');
+        // logg.error('error');
+        logg.warn('is danger');
+        logg.info({
+            name: 'shenfq'
+        });
+
+        logg.log('log1', 'log2');
+    </script>
+</body>
+</html>
